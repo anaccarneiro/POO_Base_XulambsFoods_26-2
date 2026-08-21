@@ -4,22 +4,12 @@
 namespace XulambsFoods {    
     public class Pizza {
 
-        /// <summary>
-        /// Lembre-se:
-        // ENTENDER O PROBLEMA!!!
-        //Regra 0 -- não entre em pânico
-        //Regra 1 -- não viaje
-        /// </summary>
-        /// 
-        #region atributos
-        int _maxIngredientes;
-        double _precoBase;
-        int _quantIngredientes;
-        double _valorPorAdicional;
-        string _descricao;
-        #endregion
-
-        #region construtores
+        private int _maxIngredientes;
+        private double _precoBase;
+        private int _quantIngredientes;
+        private double _valorPorAdicional;
+        private string _descricao;
+      
         public Pizza() {
             _descricao = "Pizza";
             _maxIngredientes = 8;
@@ -28,22 +18,35 @@ namespace XulambsFoods {
             _valorPorAdicional = 5d;
         }
 
-        public Pizza(int adicionais) {
-        
+        public Pizza(int adicionais) 
+        {
+            _descricao = "Pizza";
+            _maxIngredientes = 8;
+            _precoBase = 29d;
+            _quantIngredientes = adicionais;
+            _valorPorAdicional = 5d;
         }
-        #endregion
+       
 
         #region métodos privados
-        private double ValorAdicionais() {
-                
+        private double ValorAdicionais() 
+        {
+            return _quantIngredientes * _valorPorAdicional;
         }
 
         private void ModificarDescricao() {
             _descricao = $"Pizza com {_quantIngredientes} adicionais";
         }
 
-        private bool PodeAdicionar(int quantos) {
-                
+        private bool PodeAdicionar(int quantos) 
+        {
+            if (_quantIngredientes + quantos <= _maxIngredientes && quantos >= 0)
+            {
+                return true;
+            }
+
+            return false;
+
         }
         #endregion
 
@@ -60,8 +63,9 @@ namespace XulambsFoods {
             return _quantIngredientes;
         }
 
-        public string GerarCupom() {
-                
+        public string GerarCupom() 
+        {
+            return $"{_descricao}\n Valor: {CalcularValorFinal():C2}";
         }
         #endregion
 
