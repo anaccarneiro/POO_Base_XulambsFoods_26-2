@@ -9,22 +9,23 @@ namespace XulambsFoods {
         private int _quantIngredientes;
         private double _valorPorAdicional;
         private string _descricao;
-      
-        public Pizza() {
-            _descricao = "Pizza";
-            _maxIngredientes = 8;
-            _precoBase = 29d;
-            _quantIngredientes = 0;
-            _valorPorAdicional = 5d;
-        }
 
-        public Pizza(int adicionais) 
+        private void Init(int adicionais)
         {
             _descricao = "Pizza";
             _maxIngredientes = 8;
             _precoBase = 29d;
-            _quantIngredientes = adicionais;
+            AdicionarIngredientes(adicionais);
             _valorPorAdicional = 5d;
+        }
+      
+        public Pizza() {
+            Init(0);
+        }
+
+        public Pizza(int adicionais) 
+        {
+            Init(adicionais);
         }
        
 
