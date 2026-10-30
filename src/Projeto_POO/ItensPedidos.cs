@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace XulambsFoods
 {
-    internal class ItensPedidos
+    public abstract class ItensPedidos
     {
+        public string _descricao;
+        public double _precoBase;
+
+        protected ItensPedidos(string descricao, double precoBase)
+        {
+            _descricao = descricao;
+            _precoBase = precoBase;
+        }
+
+        public abstract double CalcularValorFinal();
     }
 }
